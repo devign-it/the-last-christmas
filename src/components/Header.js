@@ -14,6 +14,9 @@ const HeaderWrappper = styled.div`
 
   a {
     padding-left: 2rem;
+    @media screen and (max-width: 1200px) {
+      padding-left: 2vw;
+    }
 
     &:first-child {
       padding-left: 0;
@@ -24,11 +27,17 @@ const HeaderWrappper = styled.div`
     .title {
       font-size: ${magicNumber}px;
       color: inherit;
+      @media screen and (max-width: 1200px) {
+        font-size: 5vw;
+      }
     }
     h2 {
       font-size: ${textSize.large};
       vertical-align: middle;
       height: ${magicNumber};
+      @media screen and (max-width: 1200px) {
+        font-size: 2.5vw;
+      }
     }
   }
 `

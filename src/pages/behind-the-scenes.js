@@ -3,43 +3,129 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Carousel from "nuka-carousel"
-
+import styled from "styled-components"
 import MainContent from "../components/MainContent"
-
+import Img from "gatsby-image"
+import { graphql, useStaticQuery } from "gatsby"
 import { textSize, customColors, magicNumber } from "../components/variables"
+import CustomCursor from "../components/CustomCursor"
+import { useRef } from "react"
+import { useEffect } from "react"
+import { useState } from "react"
+
+// const ImageWrapper = styled.div`
+//   width: 100%;
+//   height: 70vh;
+//   display: flex;
+//   justify-content: center;
+//   img {
+//     height: 70vh;
+//     max-width: 100%;
+//     max-height: 100%;
+//   }
+// `
+
+const CarouselWrapper = styled.div`
+  width: auto;
+  .sliderText {
+    font-size: ${textSize.large};
+    padding-top: ${magicNumber * 0.5}px;
+    color: #fff;
+    @media screen and (max-width: 1200px) {
+      font-size: 2.5vw;
+    }
+  }
+`
 
 export default function BehindTheScenes() {
+  const query = useStaticQuery(graphql`
+    {
+      allFile(filter: { relativeDirectory: { eq: "slider" } }) {
+        edges {
+          node {
+            childImageSharp {
+              fluid(maxWidth: 1000) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const [container, setContainer] = useState()
+  const [slideNumber, setSlideNumber] = useState(1)
+  const [totalSlides, setTotalSlides] = useState(1)
+  const [cursorText, setCursorText] = useState()
+  const carousel = useRef()
+
+  useEffect(() => {
+    setContainer(document.querySelector(".slider"))
+  }, [])
+
+  useEffect(() => {
+    document.querySelector(".slider").addEventListener("mousemove", e => {
+      if (e.clientX < window.innerWidth / 2 && cursorText !== "previous") {
+        setCursorText("previous")
+      } else if (e.clientX > window.innerWidth / 2 && cursorText !== "next") {
+        setCursorText("next")
+      }
+    })
+  }, [])
+
+  useEffect(() => {
+    document.querySelector(".slider").addEventListener("click", e => {
+      if (e.clientX < window.innerWidth / 2) {
+        carousel.current.previousSlide()
+      } else if (e.clientX > window.innerWidth / 2) {
+        carousel.current.nextSlide()
+      }
+    })
+  }, [])
+
   return (
     <Layout title="Behind The Scenes" background={customColors.black}>
       <SEO title="Behind The Scenes" />
 
       <MainContent>
-        <div style={{ display: "block", margin: "auto", overflow: "hidden" }}>
+        <CarouselWrapper>
           <Carousel
-            withoutControls={true}
-            // getControlsContainerStyles={control => {
-            //   switch (control) {
-            //     case "CenterLeft":
-            //       return {
-            //         color: "red",
-            //       }
-            //   }
-            //   console.log(control)
-            // }}
-          >
-            <img src="https://images.unsplash.com/photo-1582580323501-18356e59d4aa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" />
-            <img src="https://images.unsplash.com/photo-1582581284343-70f34198dda8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" />
-          </Carousel>
-          <p
-            style={{
-              color: `${customColors.white}`,
-              fontSize: `${textSize.large}`,
-              paddingTop: `${magicNumber * 0.5}px`,
+            ref={carousel}
+            renderTopCenterControls={({ currentSlide, slideCount }) => {
+              setSlideNumber(currentSlide)
+              setTotalSlides(slideCount)
             }}
+            speed={800}
           >
-            1 out of 20 behind the scenes images
-          </p>
-        </div>
+            {query.allFile.edges.map((image, i) => {
+              if (image.node.childImageSharp) {
+                return (
+                  <Img
+                    style={{
+                      width: "100%",
+                      height: "71.6vh",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                    imgStyle={{
+                      height: "71.6vh",
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                      objectFit: "contain",
+                    }}
+                    key={i}
+                    fluid={image.node.childImageSharp.fluid}
+                  />
+                )
+              }
+            })}
+          </Carousel>
+          <CustomCursor container={container} text={cursorText} />
+          <h6 className="sliderText">
+            {slideNumber + 1} out of {totalSlides} behind the scenes images
+          </h6>
+        </CarouselWrapper>
       </MainContent>
     </Layout>
   )
