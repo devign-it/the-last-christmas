@@ -28,10 +28,17 @@ const Contact = styled.div`
         border-bottom: 1px solid #000;
         height: ${magicNumber * 1.2}px;
         font-size: ${textSize.large};
-
+        @media screen and (max-width: 1200px) {
+          font-size: 2.5vw;
+          height: 6vw;
+          text-indent: 2.5vw;
+        }
         &::placeholder {
           font-size: ${textSize.large};
           color: #0006;
+          @media screen and (max-width: 1200px) {
+            font-size: 2.5vw;
+          }
         }
       }
       .message {
@@ -40,6 +47,10 @@ const Contact = styled.div`
         height: ${magicNumber * 10}px;
         border-bottom: none;
         text-indent: 0;
+        @media screen and (max-width: 1200px) {
+          padding: 1.5vw 0 0 2.5vw;
+          height: 50vw;
+        }
       }
 
       .submit {
@@ -59,12 +70,24 @@ const Contact = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @media screen and (max-width: 1200px) {
+          right: -5vw;
+          bottom: -5vw;
+          width: 10vw;
+          height: 10vw;
+          background-color: #000;
+          font-size: 2.5vw;
+        }
       }
     }
   }
 `
 const ContactDetails = styled.div`
   padding: 0 0 0 ${magicNumber * 2.5}px;
+  @media screen and (max-width: 1200px) {
+    padding: 0 0 0 12.5vw;
+  }
   h5,
   p {
     font-size: ${textSize.large};
