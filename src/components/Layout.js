@@ -4,7 +4,7 @@ import Footer from "./footer"
 import MainContent from "./maincontent"
 import styled from "styled-components"
 
-import "./layout.css"
+import "./styles/layout.css"
 
 const PageTitle = styled.h2`
   font-size: 30px;
