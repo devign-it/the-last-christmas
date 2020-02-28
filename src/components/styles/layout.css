@@ -1,4 +1,4 @@
-@import "../assets/font/fonts.css";
+@import "../../assets/fonts/font.css";
 
 *:focus {
   outline: none;
