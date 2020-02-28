@@ -1,11 +1,11 @@
 import React from "react"
 
-import Layout from "../components/Layout"
-import SEO from "../components/SEO"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 import styled from "styled-components"
-import MainContent from "../components/MainContent"
+import MainContent from "../components/maincontent"
 
-import { textSize, magicNumber } from "../components/Variables"
+import { textSize, magicNumber } from "../components/variables"
 
 const Contact = styled.div`
   width: 100%;

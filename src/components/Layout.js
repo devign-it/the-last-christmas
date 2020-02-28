@@ -1,7 +1,7 @@
 import React from "react"
-import Header from "./Header"
-import Footer from "./Footer"
-import MainContent from "./MainContent"
+import Header from "./header"
+import Footer from "./footer"
+import MainContent from "./maincontent"
 import styled from "styled-components"
 
 import "./layout.css"

@@ -1,9 +1,9 @@
 import React from "react"
 
-import Layout from "../components/Layout"
-import SEO from "../components/SEO"
-import MainContent from "../components/MainContent"
-import { customColors } from "../components/Variables"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import MainContent from "../components/maincontent"
+import { customColors } from "../components/variables"
 
 import styled from "styled-components"
 

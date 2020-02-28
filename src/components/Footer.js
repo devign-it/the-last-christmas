@@ -1,9 +1,9 @@
 import React, { useRef } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import MainContent from "./MainContent"
+import MainContent from "./maincontent"
 
-import { customColors, magicNumber } from "./Variables"
+import { customColors, magicNumber } from "./variables"
 
 export default function Footer({ currentPage }) {
   const wrapper = useRef()
