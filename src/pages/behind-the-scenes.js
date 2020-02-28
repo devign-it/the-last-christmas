@@ -13,23 +13,12 @@ import { useRef } from "react"
 import { useEffect } from "react"
 import { useState } from "react"
 
-// const ImageWrapper = styled.div`
-//   width: 100%;
-//   height: 70vh;
-//   display: flex;
-//   justify-content: center;
-//   img {
-//     height: 70vh;
-//     max-width: 100%;
-//     max-height: 100%;
-//   }
-// `
-
 const CarouselWrapper = styled.div`
   width: auto;
+  padding-top: ${magicNumber / 2}px;
   .sliderText {
     font-size: ${textSize.large};
-    padding-top: ${magicNumber * 0.5}px;
+    padding-top: ${magicNumber / 2}px;
     color: #fff;
     @media screen and (max-width: 1200px) {
       font-size: 2.5vw;
