@@ -4,7 +4,7 @@ module.exports = {
     titleTemplate: "%s · The Last Christmas",
     description:
       "🎄 A digital space for the travelling art piece The Last Christmas",
-    url: "https://thelastchristmas.netlify.com/",
+    url: "https://thelastchristmas.netlify.com",
     image: "/og_aftermovie.JPG", // Path to your image you placed in the 'static' folder
   },
   plugins: [
