@@ -1,7 +1,5 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
-import { useRef } from "react"
-import { useEffect } from "react"
 
 const Cursor = styled.div`
   position: absolute;

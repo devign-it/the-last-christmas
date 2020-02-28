@@ -1,12 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
 import Layout from "../components/Layout"
-import { magicNumber, textSize, customColors } from "../components/variables"
-import SEO from "../components/seo"
+import { magicNumber, textSize, customColors } from "../components/Variables"
+import SEO from "../components/SEO"
 import MainContent from "../components/MainContent"
 import CustomCursor from "../components/CustomCursor"
-import { useEffect } from "react"
 
 const VideoTextWrapper = styled.div`
   width: 100%;

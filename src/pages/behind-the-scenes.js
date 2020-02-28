@@ -1,17 +1,14 @@
-import React from "react"
+import React, { useRef, useEffect, useState } from "react"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/Layout"
+import SEO from "../components/SEO"
 import Carousel from "nuka-carousel"
 import styled from "styled-components"
 import MainContent from "../components/MainContent"
 import Img from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
-import { textSize, customColors, magicNumber } from "../components/variables"
+import { textSize, customColors, magicNumber } from "../components/Variables"
 import CustomCursor from "../components/CustomCursor"
-import { useRef } from "react"
-import { useEffect } from "react"
-import { useState } from "react"
 
 const CarouselWrapper = styled.div`
   width: auto;

@@ -1,10 +1,8 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import { Link } from "gatsby"
 import MainContent from "./MainContent"
 import styled from "styled-components"
-import { magicNumber, textSize, customColors } from "../components/variables"
-import { useRef } from "react"
-import { useEffect } from "react"
+import { magicNumber, textSize, customColors } from "./Variables"
 
 const HeaderWrappper = styled.div`
   display: flex;

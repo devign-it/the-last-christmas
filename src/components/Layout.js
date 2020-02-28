@@ -1,9 +1,10 @@
 import React from "react"
-import "./layout.css"
 import Header from "./Header"
 import Footer from "./Footer"
 import MainContent from "./MainContent"
 import styled from "styled-components"
+
+import "./layout.css"
 
 const PageTitle = styled.h2`
   font-size: 30px;
