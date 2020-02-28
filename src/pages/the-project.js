@@ -19,7 +19,7 @@ const Title = styled.h1`
 export default function TheProjectPage() {
   return (
     <Layout title="The Project" background={customColors.gray}>
-      <SEO title="The Project" />
+      <SEO title="The Project" image="/og_the-project.JPG" />
 
       <MainContent>
         <Title>Soon to be released</Title>

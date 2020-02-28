@@ -44,7 +44,7 @@ function IndexPage() {
   }, [])
   return (
     <Layout title="Aftermovie" background={customColors.gray}>
-      <SEO title="Video" />
+      <SEO title="Aftermovie" image="/og_aftermovie.JPG" />
       <MainContent>
         <VideoWrapper className="vimeo-iframe">
           <iframe
