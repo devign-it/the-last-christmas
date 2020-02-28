@@ -1,11 +1,12 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "the-last-christmas",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A digital space for the traveling art piece The Last Christmas",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Devign.it <info@devign.it>",
   "dependencies": {
     "gatsby": "^2.19.7",
+    "gatsby-cli": "^2.9.0",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-manifest": "^2.2.39",
     "gatsby-plugin-offline": "^3.0.32",
@@ -35,7 +36,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "live": "git checkout production && git pull && git merge master && git push && git checkout master"
   },
   "repository": {
     "type": "git",
