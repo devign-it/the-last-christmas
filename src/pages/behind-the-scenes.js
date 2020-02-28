@@ -72,7 +72,7 @@ export default function BehindTheScenes() {
 
   return (
     <Layout title="Behind The Scenes" background={customColors.black}>
-      <SEO title="Behind The Scenes" />
+      <SEO title="Behind The Scenes" image="/og_behind-the-scenes.JPG" />
 
       <MainContent>
         <CarouselWrapper>

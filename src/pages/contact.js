@@ -101,7 +101,7 @@ const ContactDetails = styled.div`
 export default function ContactPage() {
   return (
     <Layout title="Contact">
-      <SEO title="Contact" />
+      <SEO title="Contact" image="/og_contact.JPG" />
 
       <MainContent>
         <Contact>
