@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "The Last Christmas",
-    titleTemplate: "%s · The Real Hero",
+    titleTemplate: "%s · The Last Christmas",
     description:
       "🎄 A digital space for the travelling art piece The Last Christmas",
     url: "https://thelastchristmas.netlify.com/",
