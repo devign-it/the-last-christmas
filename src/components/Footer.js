@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import MainContent from "./maincontent"
 
-import { customColors, magicNumber } from "./variables"
+import { customColors, magicNumber, textSize } from "./variables"
 
 export default function Footer({ currentPage }) {
   const wrapper = useRef()
@@ -25,7 +25,7 @@ export default function Footer({ currentPage }) {
       height: 360px;
       border: 2px solid #000;
       background-color: #fff;
-      font-size: ${magicNumber / 1.5}px;
+      font-size: ${magicNumber / 1.5};
       transform: translate(-50%, -50%);
       border-radius: 50%;
       text-align: center;
@@ -35,6 +35,7 @@ export default function Footer({ currentPage }) {
 
       h2 {
         font-weight: 300;
+        font-size: ${textSize.xlarge};
       }
 
       &:nth-child(1) {

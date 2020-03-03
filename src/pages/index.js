@@ -8,16 +8,17 @@ import CustomCursor from "../components/customcursor"
 
 const VideoTextWrapper = styled.div`
   width: 100%;
-  font-size: ${textSize.large2};
+  font-size: ${textSize.xlarge};
   @media screen and (max-width: 1200px) {
-    font-size: 3.33vw;
+    font-size: ${textSize.xlargeFlex};
   }
 
   .videoText {
-    width: ${14 * magicNumber}px;
-    margin: auto;
+    padding: ${magicNumber}px;
+    margin: ${magicNumber}px auto ${magicNumber}px auto;
     @media screen and (max-width: 1200px) {
-      width: 70vw;
+      margin: 4vw;
+      padding: 0;
     }
   }
 `
