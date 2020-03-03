@@ -26,14 +26,15 @@ const VideoWrapper = styled.div`
   display: flex;
   justify-content: center;
   z-index: 100;
-  // background-color: #000;
   padding: ${magicNumber}px 0;
   iframe {
     width: 100%;
     height: 100%;
-
     min-height: 680px;
-    @media screen and (max-width: 1200px) {
+  }
+  @media screen and (max-width: 1200px) {
+    padding: 4vw 0;
+    iframe {
       min-height: 55vw;
     }
   }
