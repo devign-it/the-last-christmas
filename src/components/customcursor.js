@@ -25,17 +25,27 @@ export default function CustomCursor({ container, text }) {
       container.addEventListener("mouseenter", e => {
         customCur.current.style.display = "flex"
         container.style.cursor = "none !important"
+        updatePosition(e.clientX, e.clientY)
       })
       container.addEventListener("mouseleave", e => {
         customCur.current.style.display = "none"
       })
       container.addEventListener("mousemove", e => {
-        customCur.current.style.left = `${e.clientX}px`
-        customCur.current.style.top = `${e.clientY}px`
+        if (customCur.current.style.display !== "flex") {
+          customCur.current.style.display = "flex"
+        }
+        updatePosition(e.clientX, e.clientY)
+      })
+      container.addEventListener("mousewheel", e => {
+        updatePosition(e.clientX, e.clientY)
       })
     }
   }, [container])
 
+  function updatePosition(x, y) {
+    customCur.current.style.left = `${x}px`
+    customCur.current.style.top = `${y + window.scrollY}px`
+  }
   return (
     <Cursor ref={customCur}>
       <h1>{text}</h1>
