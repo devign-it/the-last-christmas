@@ -36,3 +36,10 @@ h6 {
 .slider-control-bottomcenter {
   display: none;
 }
+
+.Layout {
+  min-height: 100vh;
+  @media screen and (max-width: 1220px) {
+    padding: 0 1vw;
+  }
+}

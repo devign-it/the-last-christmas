@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Header from "./header"
 import Footer from "./footer"
 import MainContent from "./maincontent"
@@ -12,23 +12,23 @@ const PageTitle = styled.h2`
     font-size: 2.5vw;
   }
 `
-const LayoutWrapper = styled.div`
-  min-height: 100vh;
-  @media screen and (max-width: 1220px) {
-    padding: 0 1vw;
-  }
-`
+// const LayoutWrapper = styled.div`
+
+// `
 export default function Layout({ children, title, background }) {
   const titleColor = background === "#000000" ? "#fff" : "#000"
-  console.log(background)
+  const [currentPage, setCurrentPage] = useState()
+  useEffect(() => {
+    setCurrentPage(title.toUpperCase())
+  }, [title])
   return (
-    <LayoutWrapper style={{ backgroundColor: `${background}` }}>
+    <div className="Layout" style={{ backgroundColor: `${background}` }}>
       <Header currentPage={title.toUpperCase()} />
       <MainContent>
         <PageTitle style={{ color: titleColor }}>{title}</PageTitle>
       </MainContent>
       <main>{children}</main>
-      <Footer currentPage={title.toUpperCase()} />
-    </LayoutWrapper>
+      <Footer currentPage={currentPage} />
+    </div>
   )
 }

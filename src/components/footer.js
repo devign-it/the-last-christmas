@@ -1,65 +1,87 @@
-import React, { useRef } from "react"
+import React, { useRef, useEffect } from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
+// import styled from "styled-components"
 import MainContent from "./maincontent"
+import "./styles/footer.css"
 
 import { customColors, magicNumber } from "./variables"
 
 export default function Footer({ currentPage }) {
   const wrapper = useRef()
 
-  const FooterWrapper = styled.div`
-    padding: 120px 0 120px 0;
-    position: relative;
-    height: 800px;
-
-    .innerWrapper {
-      margin: 180px;
-      position: relative;
-    }
-
-    a  {
-      margin: 0;
-      position: absolute;
-      width: 360px;
-      height: 360px;
-      border: 2px solid #000;
-      background-color: #fff;
-      font-size: ${magicNumber / 1.5}px;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      h2 {
-        font-weight: 300;
+  useEffect(() => {
+    ;[...wrapper.current.children].forEach((circle, i) => {
+      switch (i) {
+        case 0:
+          circle.style.backgroundColor = customColors.white
+          circle.style.color = customColors.black
+          break
+        case 1:
+          circle.style.backgroundColor = customColors.black
+          circle.style.color = customColors.white
+          if (currentPage === "BEHIND THE SCENES") {
+            circle.style.border = `1px solid ${customColors.white}`
+          }
+          break
+        case 2:
+          circle.style.backgroundColor = customColors.gray
+          break
       }
+      if (currentPage !== "BEHIND THE SCENES") {
+      }
+    })
+  }, [currentPage])
 
-      &:nth-child(1) {
-        left: 260px;
-        top: 200px;
-        h2 {
-          color: #fff;
-        }
-        background-color: #000;
-      }
-      &:nth-child(2) {
-        left: 0px;
-        top: 0px;
-      }
-      &:nth-child(3) {
-        left: 840px;
-        background-color: ${customColors.gray};
-      }
-    }
-  `
+  useEffect(() => {
+    let posOne = {}
+    let posTwo = { y: 1000, x: -1000 }
+    let posThree = {}
+    let counter = 0
+    let counterSafe = 10000
 
+    ;[...wrapper.current.children].forEach((anchor, i) => {
+      switch (i) {
+        case 0:
+          posOne.x = Math.random() * 840
+          posOne.y = Math.random() * 440
+          anchor.style.left = `${posOne.x}px`
+          anchor.style.top = `${posOne.y}px`
+          break
+
+        case 1:
+          while (
+            !(posTwo.y < 440 && posTwo.y > 0) ||
+            (!(posTwo.x < 840 && posTwo.x > 0) && counter < counterSafe)
+          ) {
+            let angle = Math.random() * Math.PI * 2
+            posTwo.x = posOne.x + Math.cos(angle) * 320
+            posTwo.y = posOne.y + Math.sin(angle) * 320
+            counter++
+          }
+          anchor.style.left = `${posTwo.x}px`
+          anchor.style.top = `${posTwo.y}px`
+          break
+        case 2:
+          counter = 0
+          while (
+            !(posThree.y < 440 && posThree.y > 0) ||
+            (!(posThree.x < 840 && posThree.x > 0) && counter < counterSafe)
+          ) {
+            let angle = Math.random() * Math.PI * 2
+            posThree.x = posOne.x + Math.cos(angle) * 320
+            posThree.y = posOne.y + Math.sin(angle) * 320
+            counter++
+          }
+          anchor.style.left = `${posThree.x}px`
+          anchor.style.top = `${posThree.y}px`
+          break
+      }
+    })
+  }, [currentPage])
   return (
     <MainContent>
-      <FooterWrapper>
-        <div className="innerWrapper" ref={wrapper}>
+      <div className="Footer">
+        <div className="footerInnerWrapper" ref={wrapper}>
           {currentPage !== "AFTERMOVIE" ? (
             <Link to="/">
               <h2>aftermovie</h2>
@@ -89,7 +111,7 @@ export default function Footer({ currentPage }) {
             ""
           )}
         </div>
-      </FooterWrapper>
+      </div>
     </MainContent>
   )
 }
