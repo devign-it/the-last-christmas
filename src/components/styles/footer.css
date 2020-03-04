@@ -35,7 +35,7 @@
   font-weight: 300;
 }
 
-.footerInnerWrapper a:nth-child(1) {
+/* .footerInnerWrapper a:nth-child(1) {
   left: 260px;
   top: 240px;
 }
@@ -45,8 +45,16 @@
 }
 .footerInnerWrapper a:nth-child(3) {
   left: 840px;
-}
+} */
 @media screen and (max-width: 1200px) {
+  .Footer {
+    padding: 5vw 0 10vw 0;
+    height: 65vw;
+  }
+  .footerInnerWrapper {
+    margin: 10vw;
+    height: 45vw;
+  }
   .footerInnerWrapper a {
     width: 30vw;
     height: 30vw;

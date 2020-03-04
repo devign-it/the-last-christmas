@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react"
 import { Link } from "gatsby"
-// import styled from "styled-components"
 import MainContent from "./maincontent"
 import "./styles/footer.css"
 
@@ -38,54 +37,71 @@ export default function Footer({ currentPage }) {
     let posThree = { y: 1000, x: -1000 }
     let counter = 0
     let counterSafe = 10000
+    let maxX, maxY, overlap
+
+    if (window.matchMedia("(min-width: 1200px)").matches) {
+      maxX = 840
+      maxY = 440
+      overlap = 320
+    } else {
+      maxX = window.innerWidth * 0.65
+      maxY = window.innerWidth * 0.36
+      overlap = window.innerWidth * 0.27
+    }
 
     ;[...wrapper.current.children].forEach((anchor, i) => {
       switch (i) {
         case 0:
-          posOne.x = Math.random() * 840
-          posOne.y = Math.random() * 440
-          anchor.style.left = `${posOne.x}px`
-          anchor.style.top = `${posOne.y}px`
+          posOne.x = Math.random() * maxX
+          posOne.y = Math.random() * maxY
+          setPosition(anchor, posOne.x, posOne.y)
           break
 
         case 1:
           while (
-            !(posTwo.y < 440 && posTwo.y > 0) ||
-            (!(posTwo.x < 840 && posTwo.x > 0) && counter < counterSafe)
+            !(posTwo.y < maxY && posTwo.y > 0) ||
+            !(posTwo.x < maxX && posTwo.x > 0)
           ) {
             let angle = Math.random() * Math.PI * 2
-            posTwo.x = posOne.x + Math.cos(angle) * 320
-            posTwo.y = posOne.y + Math.sin(angle) * 320
-            counter++
+            posTwo.x = posOne.x + Math.cos(angle) * overlap
+            posTwo.y = posOne.y + Math.sin(angle) * overlap
+
+            if (counter++ > counterSafe) break
           }
-          anchor.style.left = `${posTwo.x}px`
-          anchor.style.top = `${posTwo.y}px`
+          setPosition(anchor, posTwo.x, posTwo.y)
+
           break
         case 2:
           counter = 0
           while (
-            !(posThree.y < 440 && posThree.y > 0) ||
-            !(posThree.x < 840 && posThree.x > 0) ||
-            (!(Math.abs(posThree.x - posTwo.x) > 240) &&
-              !(Math.abs(posThree.y - posTwo.y) > 180)) ||
-            (!(Math.abs(posThree.x - posOne.x) > 240) &&
-              !(Math.abs(posThree.y - posOne.y) > 180))
+            !(posThree.y < maxY && posThree.y > 0) ||
+            !(posThree.x < maxX && posThree.x > 0) ||
+            (!(Math.abs(posThree.x - posTwo.x) > maxY * 0.55) &&
+              !(Math.abs(posThree.y - posTwo.y) > maxY * 0.55)) ||
+            (!(Math.abs(posThree.x - posOne.x) > maxY * 0.55) &&
+              !(Math.abs(posThree.y - posOne.y) > maxY * 0.55))
           ) {
             let angle = Math.random() * Math.PI * 2
-            if (posOne.x > 420) {
-              posThree.x = Math.cos(angle) * 120
+            if (posOne.x > maxX / 2) {
+              posThree.x = Math.cos(angle) * (overlap / 3)
             } else {
-              posThree.x = Math.cos(angle) * 320 + 440
+              posThree.x = Math.cos(angle) * overlap + maxY
             }
-            posThree.y = Math.random() * 440
+            posThree.y = Math.random() * maxY
             if (counter++ > counterSafe) break
           }
-          anchor.style.left = `${posThree.x}px`
-          anchor.style.top = `${posThree.y}px`
+
+          setPosition(anchor, posThree.x, posThree.y)
+
           break
       }
     })
   }, [currentPage])
+
+  function setPosition(elem, x, y) {
+    elem.style.left = `${x}px`
+    elem.style.top = `${y}px`
+  }
   return (
     <MainContent>
       <div className="Footer">

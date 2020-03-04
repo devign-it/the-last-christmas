@@ -84,6 +84,17 @@ const BehindTheScenes = () => {
     })
   }, [container])
 
+  const swiperParams = {
+    on: {
+      init: () => {},
+      slideChange: () => {
+        if (swiper !== null && swiper !== undefined) {
+          setSlideNumber(swiper.realIndex + 1)
+        }
+      },
+    },
+  }
+
   return (
     <Layout title="Behind The Scenes" background={customColors.black}>
       <SEO title="Behind The Scenes" image="/og_behind-the-scenes.JPG" />
@@ -97,6 +108,7 @@ const BehindTheScenes = () => {
         <CarouselWrapper>
           <div className="slider" ref={carousel} style={{ zIndex: 1000 }}>
             <Swiper getSwiper={setSwiper}>
+              {/* <Swiper {...swiperParams}> */}
               {query.allFile.edges.map((image, i) => {
                 if (image.node.childImageSharp) {
                   return (
