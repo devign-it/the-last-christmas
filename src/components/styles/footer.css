@@ -14,7 +14,7 @@
   position: absolute;
   width: 360px;
   height: 360px;
-  border: 2px solid #000;
+  border: 1px solid #000;
   background-color: #fff;
   font-size: 40px;
   transform: translate(-50%, -50%);
@@ -35,17 +35,6 @@
   font-weight: 300;
 }
 
-/* .footerInnerWrapper a:nth-child(1) {
-  left: 260px;
-  top: 240px;
-}
-.footerInnerWrapper a:nth-child(2) {
-  left: 0px;
-  top: 0px;
-}
-.footerInnerWrapper a:nth-child(3) {
-  left: 840px;
-} */
 @media screen and (max-width: 1200px) {
   .Footer {
     padding: 5vw 0 10vw 0;

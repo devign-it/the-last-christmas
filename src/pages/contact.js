@@ -106,11 +106,7 @@ export default function ContactPage() {
       <MainContent>
         <Contact>
           <div className="form">
-            <form
-              data-netlify="true"
-              //   method="post"
-              //   action="https://getform.io/{your-unique-getform-endpoint}"
-            >
+            <form data-netlify="true">
               <input placeholder="Name" type="text" name="name" />
               <input placeholder="Email" type="email" name="email" />
               <textarea
