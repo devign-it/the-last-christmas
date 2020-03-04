@@ -5,6 +5,9 @@ import { magicNumber, textSize, customColors } from "../components/variables"
 import SEO from "../components/seo"
 import MainContent from "../components/maincontent"
 import CustomCursor from "../components/customcursor"
+import Img from "gatsby-image"
+import Player from "@vimeo/player"
+import { graphql, useStaticQuery } from "gatsby"
 
 const VideoTextWrapper = styled.div`
   width: 100%;
@@ -27,22 +30,57 @@ const VideoWrapper = styled.div`
   justify-content: center;
   z-index: 100;
   padding: ${magicNumber}px 0;
+  position: relative;
   iframe {
     width: 100%;
     height: 100%;
     min-height: 680px;
+  }
+  .overlay {
+    position: absolute;
+    width: 100%;
+    max-height: 680px;
+    z-index: 10;
+    overflow: hidden;
   }
   @media screen and (max-width: 1200px) {
     padding: 4vw 0;
     iframe {
       min-height: 55vw;
     }
+    .overlay {
+      max-height: 55vw;
+    }
   }
 `
+
 function IndexPage() {
+  const data = useStaticQuery(graphql`
+    query {
+      overlay: file(relativePath: { eq: "slider/foto_inleidend.JPG" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
   const [container, setContainer] = useState()
+
   useEffect(() => {
-    setContainer(document.querySelector(".vimeo-iframe"))
+    setContainer(document.querySelector(".overlay"))
+  }, [])
+  useEffect(() => {
+    document.querySelector(".overlay").addEventListener("click", e => {
+      e.target.style.display = "none"
+      new Player(document.querySelector("iframe")).play()
+
+      const elemCustomCursor = document.querySelector(".CustomCursor")
+      const elemOverlay = document.querySelector(".overlay")
+      elemCustomCursor.parentNode.removeChild(elemCustomCursor)
+      elemOverlay.parentNode.removeChild(elemOverlay)
+    })
   }, [])
   return (
     <Layout title="Aftermovie" background={customColors.gray}>
@@ -50,13 +88,18 @@ function IndexPage() {
       <MainContent>
         <VideoWrapper className="vimeo-iframe">
           <iframe
-            // style={{ width: "auto%", height: "100%" }}
             title="Video"
             src="https://player.vimeo.com/video/391434825?color=ffffff"
             frameborder="0"
             allow="autoplay; fullscreen"
             allowfullscreen
           ></iframe>
+          <div className="overlay">
+            <Img
+              style={{ height: "100%", overlay: "hidden" }}
+              fluid={data.overlay.childImageSharp.fluid}
+            />
+          </div>
         </VideoWrapper>
         <VideoTextWrapper>
           <div className="videoText">
@@ -75,7 +118,7 @@ function IndexPage() {
             </p>
           </div>
         </VideoTextWrapper>
-        {/* <CustomCursor container={container} text="play" /> */}
+        <CustomCursor container={container} text="play" />
         <script src="https://player.vimeo.com/api/player.js"></script>
       </MainContent>
     </Layout>

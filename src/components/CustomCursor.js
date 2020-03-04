@@ -16,7 +16,7 @@ const Cursor = styled.div`
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 20;
+  z-index: 200;
 `
 export default function CustomCursor({ container, text }) {
   const customCur = useRef()
@@ -47,7 +47,7 @@ export default function CustomCursor({ container, text }) {
     customCur.current.style.top = `${y + window.scrollY}px`
   }
   return (
-    <Cursor ref={customCur}>
+    <Cursor className="CustomCursor" ref={customCur}>
       <h1>{text}</h1>
     </Cursor>
   )

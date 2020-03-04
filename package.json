@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Devign.it <info@devign.it>",
   "dependencies": {
+    "@vimeo/player": "^2.10.0",
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.19.7",
     "gatsby-cli": "^2.10.0",
