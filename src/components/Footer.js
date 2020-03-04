@@ -35,7 +35,7 @@ export default function Footer({ currentPage }) {
   useEffect(() => {
     let posOne = {}
     let posTwo = { y: 1000, x: -1000 }
-    let posThree = {}
+    let posThree = { y: 1000, x: -1000 }
     let counter = 0
     let counterSafe = 10000
 
@@ -65,12 +65,20 @@ export default function Footer({ currentPage }) {
           counter = 0
           while (
             !(posThree.y < 440 && posThree.y > 0) ||
-            (!(posThree.x < 840 && posThree.x > 0) && counter < counterSafe)
+            !(posThree.x < 840 && posThree.x > 0) ||
+            (!(Math.abs(posThree.x - posTwo.x) > 240) &&
+              !(Math.abs(posThree.y - posTwo.y) > 180)) ||
+            (!(Math.abs(posThree.x - posOne.x) > 240) &&
+              !(Math.abs(posThree.y - posOne.y) > 180))
           ) {
             let angle = Math.random() * Math.PI * 2
-            posThree.x = posOne.x + Math.cos(angle) * 320
-            posThree.y = posOne.y + Math.sin(angle) * 320
-            counter++
+            if (posOne.x > 420) {
+              posThree.x = Math.cos(angle) * 120
+            } else {
+              posThree.x = Math.cos(angle) * 320 + 440
+            }
+            posThree.y = Math.random() * 440
+            if (counter++ > counterSafe) break
           }
           anchor.style.left = `${posThree.x}px`
           anchor.style.top = `${posThree.y}px`

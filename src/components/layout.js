@@ -14,9 +14,6 @@ const PageTitle = styled.h2`
     font-size: ${textSize.largeFlex};
   }
 `
-// const LayoutWrapper = styled.div`
-
-// `
 export default function Layout({ children, title, background }) {
   const titleColor = background === "#000000" ? "#fff" : "#000"
   const [currentPage, setCurrentPage] = useState()

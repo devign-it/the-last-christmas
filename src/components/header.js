@@ -22,6 +22,7 @@ const HeaderWrappper = styled.div`
 
   a {
     padding-left: 2rem;
+    color: inherit;
     @media screen and (max-width: 1200px) {
       padding-left: 2vw;
     }
@@ -58,7 +59,7 @@ export default function Header({ currentPage }) {
         anchor.style.color = customColors.white
       })
     }
-  }, [])
+  }, [currentPage])
   return (
     <MainContent>
       <HeaderWrappper ref={wrapper}>
