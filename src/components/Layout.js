@@ -3,13 +3,15 @@ import Header from "./header"
 import Footer from "./footer"
 import MainContent from "./maincontent"
 import styled from "styled-components"
+import { magicNumber, textSize, customColors } from "../components/variables"
 
 import "./styles/layout.css"
 
 const PageTitle = styled.h2`
-  font-size: 30px;
+  font-size: ${textSize.large};
+  margin: ${magicNumber / 6}px 0 ${magicNumber / 4}px 0;
   @media screen and (max-width: 1200px) {
-    font-size: 2.5vw;
+    font-size: ${textSize.largeFlex};
   }
 `
 // const LayoutWrapper = styled.div`
@@ -23,7 +25,7 @@ export default function Layout({ children, title, background }) {
   }, [title])
   return (
     <div className="Layout" style={{ backgroundColor: `${background}` }}>
-      <Header currentPage={title.toUpperCase()} />
+      <Header currentPage={currentPage} />
       <MainContent>
         <PageTitle style={{ color: titleColor }}>{title}</PageTitle>
       </MainContent>

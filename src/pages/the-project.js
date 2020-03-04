@@ -11,6 +11,7 @@ const Title = styled.h1`
   text-align: center;
   font-size: 200px;
   padding-top: 120px;
+  line-height: 1;
   @media screen and (max-width: 1200px) {
     font-size: 16.66vw;
     padding-top: 10vw;

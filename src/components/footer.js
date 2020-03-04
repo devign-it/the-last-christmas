@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import MainContent from "./maincontent"
 import "./styles/footer.css"
 
-import { customColors, magicNumber } from "./variables"
+import { customColors, magicNumber, textSize } from "./variables"
 
 export default function Footer({ currentPage }) {
   const wrapper = useRef()

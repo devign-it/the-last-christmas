@@ -1,4 +1,4 @@
-export const magicNumber = 60
+export const magicNumber = "60"
 
 export const customColors = {
   black: "#000000",
@@ -8,6 +8,10 @@ export const customColors = {
 }
 
 export const textSize = {
-  large: `${magicNumber / 2}px`,
-  large2: `${magicNumber / 1.5}px`,
+  large: `30px`,
+  xlarge: `48px`,
+  xxlarge: `60px`,
+  largeFlex: `2.5vw`,
+  xlargeFlex: `4vw`,
+  xxlargeFlex: `5vw`,
 }

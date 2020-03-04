@@ -6,9 +6,19 @@ import { magicNumber, textSize, customColors } from "./variables"
 
 const HeaderWrappper = styled.div`
   display: flex;
-  width: "100%";
-  padding: 3rem 0 1rem 0;
+  width: 100%;
+  padding: ${magicNumber}px 0 0 0;
   align-items: center;
+  justify-content: space-between;
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  @media screen and (max-width: 1200px) {
+    padding: 0;
+  }
 
   a {
     padding-left: 2rem;
@@ -26,15 +36,14 @@ const HeaderWrappper = styled.div`
       font-size: ${magicNumber}px;
       color: inherit;
       @media screen and (max-width: 1200px) {
-        font-size: 5vw;
+        font-size: ${textSize.xlargeFlex};
       }
     }
     h2 {
       font-size: ${textSize.large};
       vertical-align: middle;
-      height: ${magicNumber};
       @media screen and (max-width: 1200px) {
-        font-size: 2.5vw;
+        font-size: 3vw;
       }
     }
   }
@@ -56,34 +65,36 @@ export default function Header({ currentPage }) {
         <Link to="/">
           <h1 className="title">The Last Christmas</h1>
         </Link>
-        {currentPage !== "AFTERMOVIE" ? (
-          <Link to="/">
-            <h2>aftermovie</h2>
-          </Link>
-        ) : (
-          ""
-        )}
-        {currentPage !== "BEHIND THE SCENES" ? (
-          <Link to="/behind-the-scenes">
-            <h2>behind the scenes</h2>
-          </Link>
-        ) : (
-          ""
-        )}
-        {currentPage !== "THE PROJECT" ? (
-          <Link to="/the-project">
-            <h2>the project</h2>
-          </Link>
-        ) : (
-          ""
-        )}
-        {currentPage !== "CONTACT" ? (
-          <Link to="/contact">
-            <h2>contact</h2>
-          </Link>
-        ) : (
-          ""
-        )}
+        <nav>
+          {currentPage !== "AFTERMOVIE" ? (
+            <Link to="/">
+              <h2>Aftermovie</h2>
+            </Link>
+          ) : (
+            ""
+          )}
+          {currentPage !== "BEHIND THE SCENES" ? (
+            <Link to="/behind-the-scenes">
+              <h2>Behind The Scenes</h2>
+            </Link>
+          ) : (
+            ""
+          )}
+          {currentPage !== "THE PROJECT" ? (
+            <Link to="/the-project">
+              <h2>The Project</h2>
+            </Link>
+          ) : (
+            ""
+          )}
+          {currentPage !== "CONTACT" ? (
+            <Link to="/contact">
+              <h2>Contact</h2>
+            </Link>
+          ) : (
+            ""
+          )}
+        </nav>
       </HeaderWrappper>
     </MainContent>
   )
