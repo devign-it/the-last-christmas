@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 module.exports = {
   siteMetadata: {
     title: "The Last Christmas",
@@ -8,6 +9,7 @@ module.exports = {
     image: "/og_aftermovie.JPG", // Path to your image you placed in the 'static' folder
   },
   plugins: [
+    `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

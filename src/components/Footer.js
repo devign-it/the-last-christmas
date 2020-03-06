@@ -1,8 +1,9 @@
+/* eslint-disable no-extra-semi */
 import React, { useRef, useEffect } from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import MainContent from "./maincontent"
-import "./styles/footer.css"
+import "./styles/footer.scss"
 
 import { customColors } from "./variables"
 
@@ -10,7 +11,7 @@ export default function Footer({ currentPage }) {
   const wrapper = useRef()
 
   useEffect(() => {
-    [...wrapper.current.children].forEach((circle, i) => {
+    ;[...wrapper.current.children].forEach((circle, i) => {
       switch (i) {
         case 0:
           circle.style.backgroundColor = customColors.white
@@ -53,7 +54,7 @@ export default function Footer({ currentPage }) {
       overlap = window.innerWidth * 0.27
     }
 
-    [...wrapper.current.children].forEach((anchor, i) => {
+    ;[...wrapper.current.children].forEach((anchor, i) => {
       switch (i) {
         case 0:
           posOne.x = Math.random() * maxX

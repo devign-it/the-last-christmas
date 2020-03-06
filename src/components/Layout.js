@@ -6,7 +6,7 @@ import styled from "styled-components"
 import PropTypes from "prop-types"
 import { magicNumber, textSize } from "../components/variables"
 
-import "./styles/layout.css"
+import "./styles/layout.scss"
 
 const PageTitle = styled.h2`
   font-size: ${textSize.large};
@@ -22,7 +22,7 @@ export default function Layout({ children, title, background }) {
     setCurrentPage(title.toUpperCase())
   }, [title])
   return (
-    <div className="Layout" style={{ backgroundColor: `${background}` }}>
+    <div className="layout" style={{ backgroundColor: `${background}` }}>
       <Header currentPage={currentPage} />
       <MainContent>
         <PageTitle style={{ color: titleColor }}>{title}</PageTitle>
