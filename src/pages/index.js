@@ -20,7 +20,7 @@ const VideoTextWrapper = styled.div`
     padding: ${magicNumber}px;
     margin: ${magicNumber}px auto ${magicNumber}px auto;
     @media screen and (max-width: 1200px) {
-      margin: 4vw;
+      margin: 0;
       padding: 0;
     }
   }

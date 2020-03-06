@@ -1,0 +1,45 @@
+@import "../../assets/fonts/font.css";
+
+*:focus {
+  outline: none;
+}
+html {
+  font-family: "GT Super";
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.slider-control-centerleft,
+.slider-control-centerright,
+.slider-control-bottomcenter {
+  display: none;
+}
+
+.layout {
+  min-height: 100vh;
+  @media screen and (max-width: 600px) {
+    padding: 4vw;
+  }
+}
