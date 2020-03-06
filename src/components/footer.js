@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react"
 import { Link } from "gatsby"
+import PropTypes from "prop-types"
 import MainContent from "./maincontent"
 import "./styles/footer.css"
 
@@ -9,7 +10,7 @@ export default function Footer({ currentPage }) {
   const wrapper = useRef()
 
   useEffect(() => {
-    ;[...wrapper.current.children].forEach((circle, i) => {
+    [...wrapper.current.children].forEach((circle, i) => {
       switch (i) {
         case 0:
           circle.style.backgroundColor = customColors.white
@@ -26,18 +27,21 @@ export default function Footer({ currentPage }) {
           circle.style.backgroundColor = customColors.gray
           break
       }
+      // eslint-disable-next-line no-empty
       if (currentPage !== "BEHIND THE SCENES") {
       }
     })
   }, [currentPage])
 
   useEffect(() => {
-    let posOne = {}
-    let posTwo = { y: 1000, x: -1000 }
-    let posThree = { y: 1000, x: -1000 }
+    const posOne = {}
+    const posTwo = { y: 1000, x: -1000 }
+    const posThree = { y: 1000, x: -1000 }
     let counter = 0
-    let counterSafe = 10000
-    let maxX, maxY, overlap
+    const counterSafe = 10000
+    let maxX
+    let maxY
+    let overlap
 
     if (window.matchMedia("(min-width: 1200px)").matches) {
       maxX = 840
@@ -49,7 +53,7 @@ export default function Footer({ currentPage }) {
       overlap = window.innerWidth * 0.27
     }
 
-    ;[...wrapper.current.children].forEach((anchor, i) => {
+    [...wrapper.current.children].forEach((anchor, i) => {
       switch (i) {
         case 0:
           posOne.x = Math.random() * maxX
@@ -62,7 +66,7 @@ export default function Footer({ currentPage }) {
             !(posTwo.y < maxY && posTwo.y > 0) ||
             !(posTwo.x < maxX && posTwo.x > 0)
           ) {
-            let angle = Math.random() * Math.PI * 2
+            const angle = Math.random() * Math.PI * 2
             posTwo.x = posOne.x + Math.cos(angle) * overlap
             posTwo.y = posOne.y + Math.sin(angle) * overlap
 
@@ -81,7 +85,7 @@ export default function Footer({ currentPage }) {
             (!(Math.abs(posThree.x - posOne.x) > maxY * 0.55) &&
               !(Math.abs(posThree.y - posOne.y) > maxY * 0.55))
           ) {
-            let angle = Math.random() * Math.PI * 2
+            const angle = Math.random() * Math.PI * 2
             if (posOne.x > maxX / 2) {
               posThree.x = Math.cos(angle) * (overlap / 3)
             } else {
@@ -138,4 +142,8 @@ export default function Footer({ currentPage }) {
       </div>
     </MainContent>
   )
+}
+
+Footer.propTypes = {
+  currentPage: PropTypes.string,
 }

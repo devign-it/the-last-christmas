@@ -90,9 +90,9 @@ function IndexPage() {
           <iframe
             title="Video"
             src="https://player.vimeo.com/video/391434825?color=ffffff"
-            frameborder="0"
+            frameBorder="0"
             allow="autoplay; fullscreen"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
           <div className="overlay">
             <Img
@@ -107,7 +107,7 @@ function IndexPage() {
               At his young age he strived to meet the demands by spending every
               second on his passion and work. A love of natural light, travel
               and global outlooks are but some of his motivations whilst
-              developing his career. Rein Kooyman's work is
+              developing his career. Rein Kooymans work is
             </p>
             <br />
             <p>

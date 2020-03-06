@@ -1,16 +1,16 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, {useRef, useEffect, useState} from 'react';
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Swiper from "react-id-swiper"
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import Swiper from 'react-id-swiper';
 
-import styled from "styled-components"
-import MainContent from "../components/maincontent"
-import Img from "gatsby-image"
-import { graphql, useStaticQuery } from "gatsby"
-import { textSize, customColors, magicNumber } from "../components/variables"
-import CustomCursor from "../components/customcursor"
-import Helmet from "react-helmet"
+import styled from 'styled-components';
+import MainContent from '../components/maincontent';
+import Img from 'gatsby-image';
+import {graphql, useStaticQuery} from 'gatsby';
+import {textSize, customColors, magicNumber} from '../components/variables';
+import CustomCursor from '../components/customcursor';
+import Helmet from 'react-helmet';
 
 const CarouselWrapper = styled.div`
   width: auto;
@@ -28,7 +28,7 @@ const CarouselWrapper = styled.div`
       font-size: 2.5vw;
     }
   }
-`
+`;
 
 const BehindTheScenes = () => {
   const query = useStaticQuery(graphql`
@@ -45,44 +45,44 @@ const BehindTheScenes = () => {
         }
       }
     }
-  `)
+  `);
 
-  const [container, setContainer] = useState()
-  const [slideNumber, setSlideNumber] = useState(1)
-  const [cursorText, setCursorText] = useState()
-  const [swiper, setSwiper] = useState()
-  const carousel = useRef()
-
-  useEffect(() => {
-    setContainer(document.querySelector(".slider"))
-  }, [])
+  const [container, setContainer] = useState();
+  const [slideNumber, setSlideNumber] = useState(1);
+  const [cursorText, setCursorText] = useState();
+  const [swiper, setSwiper] = useState();
+  const carousel = useRef();
 
   useEffect(() => {
-    document.querySelector(".slider").addEventListener("mousemove", e => {
-      if (e.clientX < window.innerWidth / 2 && cursorText !== "previous") {
-        setCursorText("previous")
-      } else if (e.clientX > window.innerWidth / 2 && cursorText !== "next") {
-        setCursorText("next")
+    setContainer(document.querySelector('.slider'));
+  }, []);
+
+  useEffect(() => {
+    document.querySelector('.slider').addEventListener('mousemove', (e) => {
+      if (e.clientX < window.innerWidth / 2 && cursorText !== 'previous') {
+        setCursorText('previous');
+      } else if (e.clientX > window.innerWidth / 2 && cursorText !== 'next') {
+        setCursorText('next');
       }
-    })
-  }, [])
+    });
+  }, []);
 
   useEffect(() => {
-    document.querySelector(".slider").addEventListener("click", e => {
+    document.querySelector('.slider').addEventListener('click', (e) => {
       if (e.clientX < window.innerWidth / 2) {
         if (swiper !== null && swiper !== undefined) {
-          swiper.slidePrev()
+          swiper.slidePrev();
         }
       } else if (e.clientX > window.innerWidth / 2) {
         if (swiper !== null && swiper !== undefined) {
-          swiper.slideNext()
+          swiper.slideNext();
         }
       }
       if (swiper !== null && swiper !== undefined) {
-        setSlideNumber(swiper.realIndex + 1)
+        setSlideNumber(swiper.realIndex + 1);
       }
-    })
-  }, [container])
+    });
+  }, [container]);
 
   return (
     <Layout title="Behind The Scenes" background={customColors.black}>
@@ -95,29 +95,29 @@ const BehindTheScenes = () => {
       </Helmet>
       <MainContent>
         <CarouselWrapper>
-          <div className="slider" ref={carousel} style={{ zIndex: 1000 }}>
+          <div className="slider" ref={carousel} style={{zIndex: 1000}}>
             <Swiper getSwiper={setSwiper}>
               {query.allFile.edges.map((image, i) => {
                 if (image.node.childImageSharp) {
                   return (
                     <Img
                       style={{
-                        width: "100%",
-                        height: "71.6vh",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
+                        width: '100%',
+                        height: '71.6vh',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                       }}
                       imgStyle={{
-                        height: "71.6vh",
-                        maxWidth: "100%",
-                        maxHeight: "100%",
-                        objectFit: "contain",
+                        height: '71.6vh',
+                        maxWidth: '100%',
+                        maxHeight: '100%',
+                        objectFit: 'contain',
                       }}
                       key={i}
                       fluid={image.node.childImageSharp.fluid}
                     />
-                  )
+                  );
                 }
               })}
             </Swiper>
@@ -129,7 +129,7 @@ const BehindTheScenes = () => {
         </CarouselWrapper>
       </MainContent>
     </Layout>
-  )
-}
+  );
+};
 
-export default BehindTheScenes
+export default BehindTheScenes;

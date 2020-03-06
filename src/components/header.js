@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import MainContent from "./maincontent"
 import styled from "styled-components"
 import { magicNumber, textSize, customColors } from "./variables"
+import PropTypes from "prop-types"
 
 const HeaderWrappper = styled.div`
   display: flex;
@@ -55,7 +56,7 @@ export default function Header({ currentPage }) {
 
   useEffect(() => {
     if (currentPage === "BEHIND THE SCENES") {
-      ;[...wrapper.current.children].forEach(anchor => {
+      [...wrapper.current.children].forEach(anchor => {
         anchor.style.color = customColors.white
       })
     }
@@ -99,4 +100,8 @@ export default function Header({ currentPage }) {
       </HeaderWrappper>
     </MainContent>
   )
+}
+
+Header.propTypes = {
+  currentPage: PropTypes.string,
 }

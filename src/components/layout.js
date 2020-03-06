@@ -3,7 +3,8 @@ import Header from "./header"
 import Footer from "./footer"
 import MainContent from "./maincontent"
 import styled from "styled-components"
-import { magicNumber, textSize, customColors } from "../components/variables"
+import PropTypes from "prop-types"
+import { magicNumber, textSize } from "../components/variables"
 
 import "./styles/layout.css"
 
@@ -30,4 +31,10 @@ export default function Layout({ children, title, background }) {
       <Footer currentPage={currentPage} />
     </div>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node,
+  title: PropTypes.string,
+  background: PropTypes.string,
 }

@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 const Cursor = styled.div`
@@ -27,7 +28,7 @@ export default function CustomCursor({ container, text }) {
         container.style.cursor = "none !important"
         updatePosition(e.clientX, e.clientY)
       })
-      container.addEventListener("mouseleave", e => {
+      container.addEventListener("mouseleave", () => {
         customCur.current.style.display = "none"
       })
       container.addEventListener("mousemove", e => {
@@ -51,4 +52,9 @@ export default function CustomCursor({ container, text }) {
       <h1>{text}</h1>
     </Cursor>
   )
+}
+
+CustomCursor.propTypes = {
+  container: PropTypes.object,
+  text: PropTypes.string,
 }
