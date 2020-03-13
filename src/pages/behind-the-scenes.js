@@ -37,7 +37,7 @@ const BehindTheScenes = () => {
         edges {
           node {
             childImageSharp {
-              fluid(maxWidth: 1000, maxHeight: 800) {
+              fluid(maxWidth: 1200) {
                 ...GatsbyImageSharpFluid
               }
             }
