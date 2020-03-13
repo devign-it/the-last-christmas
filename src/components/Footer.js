@@ -15,9 +15,9 @@ export default function Footer({ currentPage }) {
   const posOne = {}
   const posTwo = { y: 1000, x: -1000 }
   const posThree = { y: 1000, x: -1000, left: false }
-  calculateCirclesRatio()
 
   useEffect(() => {
+    calculateCirclesRatio()
     ;[...wrapper.current.children].forEach((circle, i) => {
       switch (i) {
         case 0:
@@ -108,7 +108,7 @@ export default function Footer({ currentPage }) {
   }
 
   function calculateCirclesRatio() {
-    if (window.matchMedia("(min-width: 1200px)").matches) {
+    if (window && window.matchMedia("(min-width: 1200px)").matches) {
       maxX = 840
       maxY = 440
       overlap = 320
