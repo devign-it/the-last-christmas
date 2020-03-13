@@ -4,12 +4,12 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Swiper from "react-id-swiper"
 
-import styled from "styled-components"
 import MainContent from "../components/maincontent"
 import Img from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
 import { textSize, customColors, magicNumber } from "../components/variables"
 import CustomCursor from "../components/customcursor"
+import styled from "styled-components"
 import Helmet from "react-helmet"
 
 const CarouselWrapper = styled.div`
@@ -37,7 +37,7 @@ const BehindTheScenes = () => {
         edges {
           node {
             childImageSharp {
-              fluid(maxWidth: 1000) {
+              fluid(maxWidth: 1200) {
                 ...GatsbyImageSharpFluid
               }
             }
