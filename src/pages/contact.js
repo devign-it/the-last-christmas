@@ -1,22 +1,26 @@
-import React from 'react';
+import React from "react"
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import styled from 'styled-components';
-import MainContent from '../components/maincontent';
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import styled from "styled-components"
+import MainContent from "../components/maincontent"
 
-import {textSize, magicNumber} from '../components/variables';
+import { textSize, magicNumber } from "../components/variables"
 
 const Contact = styled.div`
   width: 100%;
   display: flex;
   padding-top: ${magicNumber * 1.5}px;
-
+  @media screen and (max-width: 600px) {
+    padding-top: 10vw;
+  }
   .form {
     position: relative;
     width: 50%;
     border: 1px solid #000;
-
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
     form {
       input,
       textarea {
@@ -82,11 +86,14 @@ const Contact = styled.div`
       }
     }
   }
-`;
+`
 const ContactDetails = styled.div`
   padding: 0 0 0 ${magicNumber * 2.5}px;
   @media screen and (max-width: 1200px) {
     padding: 0 0 0 12.5vw;
+  }
+  @media screen and (max-width: 600px) {
+    padding: 0 0 0 10vw;
   }
   h5,
   p {
@@ -96,8 +103,12 @@ const ContactDetails = styled.div`
       font-size: 2.5vw;
       line-height: 4.5vw;
     }
+    @media screen and (max-width: 600px) {
+      font-size: 5vw;
+      line-height: 8vw;
+    }
   }
-`;
+`
 export default function ContactPage() {
   return (
     <Layout title="Contact">
@@ -120,7 +131,7 @@ export default function ContactPage() {
               </button>
             </form>
           </div>
-          <div style={{width: '50%'}} className="details">
+          <div style={{ width: "50%" }} className="details">
             <ContactDetails>
               <h5>Contact</h5>
               <p>info@thelastchristmas.com</p>
@@ -136,5 +147,5 @@ export default function ContactPage() {
         </Contact>
       </MainContent>
     </Layout>
-  );
+  )
 }
