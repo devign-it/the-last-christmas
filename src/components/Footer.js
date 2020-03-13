@@ -9,6 +9,13 @@ import { customColors } from "./variables"
 
 export default function Footer({ currentPage }) {
   const wrapper = useRef()
+  let maxX
+  let maxY
+  let overlap
+  const posOne = {}
+  const posTwo = { y: 1000, x: -1000 }
+  const posThree = { y: 1000, x: -1000, left: false }
+  calculateCirclesRatio()
 
   useEffect(() => {
     ;[...wrapper.current.children].forEach((circle, i) => {
@@ -34,32 +41,18 @@ export default function Footer({ currentPage }) {
     })
   }, [currentPage])
 
+  /* I have no memory of writing this code and I take no responsibility for it. 
+  But it works. */
   useEffect(() => {
-    const posOne = {}
-    const posTwo = { y: 1000, x: -1000 }
-    const posThree = { y: 1000, x: -1000 }
     let counter = 0
     const counterSafe = 10000
-    let maxX
-    let maxY
-    let overlap
-
-    if (window.matchMedia("(min-width: 1200px)").matches) {
-      maxX = 840
-      maxY = 440
-      overlap = 320
-    } else {
-      maxX = window.innerWidth * 0.65
-      maxY = window.innerWidth * 0.36
-      overlap = window.innerWidth * 0.27
-    }
 
     ;[...wrapper.current.children].forEach((anchor, i) => {
       switch (i) {
         case 0:
-          posOne.x = Math.random() * maxX
-          posOne.y = Math.random() * maxY
-          setPosition(anchor, posOne.x, posOne.y)
+          posOne.x = Math.random()
+          posOne.y = Math.random()
+          setPosition(anchor, posOne.x * maxX, posOne.y * maxY)
           break
 
         case 1:
@@ -68,12 +61,16 @@ export default function Footer({ currentPage }) {
             !(posTwo.x < maxX && posTwo.x > 0)
           ) {
             const angle = Math.random() * Math.PI * 2
-            posTwo.x = posOne.x + Math.cos(angle) * overlap
-            posTwo.y = posOne.y + Math.sin(angle) * overlap
+            posTwo.x = Math.cos(angle)
+            posTwo.y = Math.sin(angle)
 
             if (counter++ > counterSafe) break
           }
-          setPosition(anchor, posTwo.x, posTwo.y)
+          setPosition(
+            anchor,
+            posTwo.x + posOne.x * overlap,
+            posOne.y + posTwo.y * overlap
+          )
 
           break
         case 2:
@@ -88,24 +85,62 @@ export default function Footer({ currentPage }) {
           ) {
             const angle = Math.random() * Math.PI * 2
             if (posOne.x > maxX / 2) {
-              posThree.x = Math.cos(angle) * (overlap / 3)
-            } else {
-              posThree.x = Math.cos(angle) * overlap + maxY
+              posThree.left = true
             }
-            posThree.y = Math.random() * maxY
+            posThree.x = Math.cos(angle)
+            posThree.y = Math.random()
             if (counter++ > counterSafe) break
           }
-
-          setPosition(anchor, posThree.x, posThree.y)
-
+          setPosition(
+            anchor,
+            posThree.x * posThree.left ? overlap / 3 : overlap + maxY,
+            posThree.y * maxY
+          )
           break
       }
     })
+    window.onresize = setCirclePositions
   }, [currentPage])
 
   function setPosition(elem, x, y) {
     elem.style.left = `${x}px`
     elem.style.top = `${y}px`
+  }
+
+  function calculateCirclesRatio() {
+    if (window.matchMedia("(min-width: 1200px)").matches) {
+      maxX = 840
+      maxY = 440
+      overlap = 320
+    } else {
+      maxX = window.innerWidth * 0.65
+      maxY = window.innerWidth * 0.36
+      overlap = window.innerWidth * 0.27
+    }
+  }
+  function setCirclePositions() {
+    calculateCirclesRatio()
+    ;[...wrapper.current.children].forEach((anchor, i) => {
+      switch (i) {
+        case 0:
+          setPosition(anchor, posOne.x * maxX, posOne.y * maxY)
+          break
+        case 1:
+          setPosition(
+            anchor,
+            posTwo.x + posOne.x * overlap,
+            posOne.y + posTwo.y * overlap
+          )
+          break
+        case 2:
+          setPosition(
+            anchor,
+            posThree.x * posThree.left ? overlap / 3 : overlap + maxY,
+            posThree.y * maxY
+          )
+          break
+      }
+    })
   }
   return (
     <MainContent>
