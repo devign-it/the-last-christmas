@@ -59,7 +59,7 @@ function IndexPage() {
     query {
       overlay: file(relativePath: { eq: "slider/foto_inleidend.JPG" }) {
         childImageSharp {
-          fluid(maxWidth: 800) {
+          fluid(maxWidth: 800, maxHeight: 600) {
             ...GatsbyImageSharpFluid
           }
         }
