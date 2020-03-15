@@ -8,7 +8,7 @@
     "@vimeo/player": "^2.10.0",
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.19.7",
-    "gatsby-cli": "^2.10.0",
+    "gatsby-cli": "^2.10.10",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-manifest": "^2.2.39",
     "gatsby-plugin-offline": "^3.0.32",
