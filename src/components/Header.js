@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react"
-import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import MainContent from "./maincontent"
 import styled from "styled-components"
 import { magicNumber, textSize, customColors } from "./variables"
@@ -56,7 +56,7 @@ export default function Header({ currentPage }) {
 
   useEffect(() => {
     if (currentPage === "BEHIND THE SCENES") {
-      [...wrapper.current.children].forEach(anchor => {
+      ;[...wrapper.current.children].forEach(anchor => {
         anchor.style.color = customColors.white
       })
     }
@@ -64,35 +64,35 @@ export default function Header({ currentPage }) {
   return (
     <MainContent>
       <HeaderWrappper ref={wrapper}>
-        <Link to="/">
+        <AniLink to="/" paintDrip hex={customColors.gray}>
           <h1 className="title">The Last Christmas</h1>
-        </Link>
+        </AniLink>
         <nav>
           {currentPage !== "AFTERMOVIE" ? (
-            <Link to="/">
+            <AniLink to="/" paintDrip hex={customColors.gray}>
               <h2>Aftermovie</h2>
-            </Link>
+            </AniLink>
           ) : (
             ""
           )}
           {currentPage !== "BEHIND THE SCENES" ? (
-            <Link to="/behind-the-scenes">
+            <AniLink to="/behind-the-scenes" paintDrip hex={customColors.black}>
               <h2>Behind The Scenes</h2>
-            </Link>
+            </AniLink>
           ) : (
             ""
           )}
           {currentPage !== "THE PROJECT" ? (
-            <Link to="/the-project">
+            <AniLink to="/the-project" paintDrip hex={customColors.gray}>
               <h2>The Project</h2>
-            </Link>
+            </AniLink>
           ) : (
             ""
           )}
           {currentPage !== "CONTACT" ? (
-            <Link to="/contact">
+            <AniLink to="/contact" paintDrip hex={customColors.white}>
               <h2>Contact</h2>
-            </Link>
+            </AniLink>
           ) : (
             ""
           )}
