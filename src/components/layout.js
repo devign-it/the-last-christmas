@@ -23,7 +23,7 @@ export default function Layout({ children, title, background }) {
   }, [title])
   return (
     <div className="layout" style={{ backgroundColor: `${background}` }}>
-      <Header currentPage={currentPage} />
+      <Header backgroundColor={background} currentPage={currentPage} />
       <MainContent>
         <PageTitle style={{ color: titleColor }}>{title}</PageTitle>
       </MainContent>

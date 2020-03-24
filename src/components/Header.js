@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import MainContent from "./maincontent"
 import styled from "styled-components"
@@ -12,11 +12,6 @@ const HeaderWrappper = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
   @media screen and (max-width: 1200px) {
     padding: 0;
   }
@@ -40,6 +35,10 @@ const HeaderWrappper = styled.div`
       @media screen and (max-width: 1200px) {
         font-size: ${textSize.xlargeFlex};
       }
+      @media screen and (max-width: 600px) {
+        font-size: ${textSize.xxxlargeFlex};
+        width: 30vw;
+      }
     }
     h2 {
       font-size: ${textSize.large};
@@ -49,18 +48,94 @@ const HeaderWrappper = styled.div`
       }
     }
   }
+  nav {
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .menu {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      @media screen and (max-width: 600px) {
+        flex-direction: column;
+        align-items: flex-end;
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      position: fixed;
+      right: 4vw;
+      top: 4vw;
+    }
+    .navToggle {
+      border: 1px solid ${customColors.black};
+      width: 5vw;
+      height: 5vw;
+      border-radius: 50%;
+      margin-bottom: ${magicNumber / 6}px;
+      display: none;
+      @media screen and (max-width: 600px) {
+        display: block;
+      }
+    }
+  }
 `
 
-export default function Header({ currentPage }) {
+export default function Header({ currentPage, backgroundColor }) {
   const wrapper = useRef()
+  const navToggle = useRef()
+  const menu = useRef()
+  let isNavOpen = false
+  console.log(backgroundColor)
 
   useEffect(() => {
     if (currentPage === "BEHIND THE SCENES") {
       ;[...wrapper.current.children].forEach(anchor => {
         anchor.style.color = customColors.white
       })
+      navToggle.current.style.borderColor = customColors.white
     }
   }, [currentPage])
+
+  useEffect(() => {
+    navToggle.current.addEventListener("click", () => handleMobileNav())
+    navToggle.current.style.background = backgroundColor
+  }, [])
+
+  const handleMobileNav = () => {
+    if (!isNavOpen) {
+      navToggle.current.style.background = customColors.black
+      menu.current.style.display = "flex"
+    } else {
+      navToggle.current.style.background = backgroundColor
+      menu.current.style.display = "none"
+    }
+    isNavOpen = !isNavOpen
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (window && window.matchMedia("(min-width: 600px)").matches) {
+        if (!isNavOpen) {
+          menu.current.style.display = "flex"
+        }
+        navToggle.current.style.display = "none"
+      } else {
+        if (!isNavOpen) {
+          menu.current.style.display = "none"
+        }
+
+        navToggle ? (navToggle.current.style.display = "block") : ""
+      }
+    })
+    window.addEventListener("scroll", () => {
+      if (isNavOpen) {
+        handleMobileNav()
+      }
+    })
+  }, [])
   return (
     <MainContent>
       <HeaderWrappper ref={wrapper}>
@@ -68,34 +143,41 @@ export default function Header({ currentPage }) {
           <h1 className="title">The Last Christmas</h1>
         </AniLink>
         <nav>
-          {currentPage !== "AFTERMOVIE" ? (
-            <AniLink to="/" paintDrip hex={customColors.gray}>
-              <h2>Aftermovie</h2>
-            </AniLink>
-          ) : (
-            ""
-          )}
-          {currentPage !== "BEHIND THE SCENES" ? (
-            <AniLink to="/behind-the-scenes" paintDrip hex={customColors.black}>
-              <h2>Behind The Scenes</h2>
-            </AniLink>
-          ) : (
-            ""
-          )}
-          {currentPage !== "THE PROJECT" ? (
-            <AniLink to="/the-project" paintDrip hex={customColors.gray}>
-              <h2>The Project</h2>
-            </AniLink>
-          ) : (
-            ""
-          )}
-          {currentPage !== "CONTACT" ? (
-            <AniLink to="/contact" paintDrip hex={customColors.white}>
-              <h2>Contact</h2>
-            </AniLink>
-          ) : (
-            ""
-          )}
+          <div ref={navToggle} className="navToggle"></div>
+          <div ref={menu} className="menu">
+            {currentPage !== "AFTERMOVIE" ? (
+              <AniLink to="/" paintDrip hex={customColors.gray}>
+                <h2>Aftermovie</h2>
+              </AniLink>
+            ) : (
+              ""
+            )}
+            {currentPage !== "BEHIND THE SCENES" ? (
+              <AniLink
+                to="/behind-the-scenes"
+                paintDrip
+                hex={customColors.black}
+              >
+                <h2>Behind The Scenes</h2>
+              </AniLink>
+            ) : (
+              ""
+            )}
+            {currentPage !== "THE PROJECT" ? (
+              <AniLink to="/the-project" paintDrip hex={customColors.gray}>
+                <h2>The Project</h2>
+              </AniLink>
+            ) : (
+              ""
+            )}
+            {currentPage !== "CONTACT" ? (
+              <AniLink to="/contact" paintDrip hex={customColors.white}>
+                <h2>Contact</h2>
+              </AniLink>
+            ) : (
+              ""
+            )}
+          </div>
         </nav>
       </HeaderWrappper>
     </MainContent>
