@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, { useRef, useEffect } from "react"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import MainContent from "./maincontent"
 import styled from "styled-components"
@@ -88,7 +88,6 @@ export default function Header({ currentPage, backgroundColor }) {
   const navToggle = useRef()
   const menu = useRef()
   let isNavOpen = false
-  console.log(backgroundColor)
 
   useEffect(() => {
     if (currentPage === "BEHIND THE SCENES") {
@@ -109,8 +108,10 @@ export default function Header({ currentPage, backgroundColor }) {
       navToggle.current.style.background = customColors.black
       menu.current.style.display = "flex"
     } else {
-      navToggle.current.style.background = backgroundColor
-      menu.current.style.display = "none"
+      menu && menu.current ? (menu.current.style.display = "none") : ""
+      navToggle && navToggle.current
+        ? (navToggle.current.style.background = backgroundColor)
+        : ""
     }
     isNavOpen = !isNavOpen
   }
@@ -126,8 +127,10 @@ export default function Header({ currentPage, backgroundColor }) {
         if (!isNavOpen) {
           menu.current.style.display = "none"
         }
-
-        navToggle ? (navToggle.current.style.display = "block") : ""
+        if (navToggle && navToggle.current) {
+          navToggle.current.style.display = "block"
+          navToggle.current.style.background = backgroundColor
+        }
       }
     })
     window.addEventListener("scroll", () => {
@@ -186,4 +189,5 @@ export default function Header({ currentPage, backgroundColor }) {
 
 Header.propTypes = {
   currentPage: PropTypes.string,
+  backgroundColor: PropTypes.string,
 }
