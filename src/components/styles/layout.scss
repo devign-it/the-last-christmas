@@ -31,6 +31,14 @@ h6 {
   margin: 0;
 }
 
+p {
+  margin-bottom: 48px;
+  line-height: 1.4;
+  @media screen and (max-width: 1200px) {
+    margin-bottom: 4vw;
+  }
+}
+
 .slider-control-centerleft,
 .slider-control-centerright,
 .slider-control-bottomcenter {

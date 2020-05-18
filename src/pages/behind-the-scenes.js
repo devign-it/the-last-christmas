@@ -10,7 +10,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { textSize, customColors, magicNumber } from "../components/variables"
 import CustomCursor from "../components/customcursor"
 import styled from "styled-components"
-import Helmet from "react-helmet"
+import { Helmet } from "react-helmet"
 
 const CarouselWrapper = styled.div`
   width: auto;
@@ -58,7 +58,7 @@ const BehindTheScenes = () => {
   }, [])
 
   useEffect(() => {
-    document.querySelector(".slider").addEventListener("mousemove", e => {
+    document.querySelector(".slider").addEventListener("mousemove", (e) => {
       if (e.clientX < window.innerWidth / 2 && cursorText !== "previous") {
         setCursorText("previous")
       } else if (e.clientX > window.innerWidth / 2 && cursorText !== "next") {
@@ -68,7 +68,7 @@ const BehindTheScenes = () => {
   }, [])
 
   useEffect(() => {
-    document.querySelector(".slider").addEventListener("click", e => {
+    document.querySelector(".slider").addEventListener("click", (e) => {
       if (e.clientX < window.innerWidth / 2) {
         if (swiper !== null && swiper !== undefined) {
           swiper.slidePrev()

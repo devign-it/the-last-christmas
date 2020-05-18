@@ -18,14 +18,20 @@ const PageTitle = styled.h2`
 export default function Layout({ children, title, background }) {
   const titleColor = background === "#000000" ? "#fff" : "#000"
   const [currentPage, setCurrentPage] = useState()
-  useEffect(() => {
-    setCurrentPage(title.toUpperCase())
-  }, [title])
+
+  if (title) {
+    useEffect(() => {
+      setCurrentPage(title.toUpperCase())
+    }, [title])
+  }
+
   return (
     <div className="layout" style={{ backgroundColor: `${background}` }}>
       <Header backgroundColor={background} currentPage={currentPage} />
       <MainContent>
-        <PageTitle style={{ color: titleColor }}>{title}</PageTitle>
+        {title ? (
+          <PageTitle style={{ color: titleColor }}>{title}</PageTitle>
+        ) : null}
       </MainContent>
       <main>{children}</main>
       <Footer currentPage={currentPage} />

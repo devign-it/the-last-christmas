@@ -91,7 +91,7 @@ export default function Header({ currentPage, backgroundColor }) {
 
   useEffect(() => {
     if (currentPage === "BEHIND THE SCENES") {
-      ;[...wrapper.current.children].forEach(anchor => {
+      ;[...wrapper.current.children].forEach((anchor) => {
         anchor.style.color = customColors.white
       })
       navToggle.current.style.borderColor = customColors.white
