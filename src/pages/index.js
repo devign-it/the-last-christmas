@@ -73,7 +73,7 @@ function IndexPage() {
     setContainer(document.querySelector(".overlay"))
   }, [])
   useEffect(() => {
-    document.querySelector(".overlay").addEventListener("click", e => {
+    document.querySelector(".overlay").addEventListener("click", (e) => {
       e.target.style.display = "none"
       new Player(document.querySelector("iframe")).play()
 
@@ -90,7 +90,7 @@ function IndexPage() {
         <div className="VideoWrapper vimeo-iframe">
           <iframe
             title="Video"
-            src="https://player.vimeo.com/video/391434825?color=ffffff"
+            src="https://player.vimeo.com/video/407974165?color=ffffff"
             frameBorder="0"
             allow="autoplay; fullscreen"
             allowFullScreen
