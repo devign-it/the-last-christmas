@@ -4,11 +4,9 @@ main {
   margin: auto;
 
   p a {
-    font-weight: 600;
-    color: rgb(204, 204, 204);
-
+    opacity: 0.5;
     &:hover {
-      color: initial;
+      opacity: 1;
     }
   }
 }

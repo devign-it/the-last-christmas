@@ -159,6 +159,16 @@ function IndexPage() {
               For every work sold, half of the revenue will be donated to{" "}
               <a href="https://treesforall.nl/en/">Threes for All</a>
             </p>
+            <p>
+              The Covid-19 measures will always be strictly applied at this
+              exhibition. As a result, we will invite people via email in a time
+              slot.{" "}
+              <a href="mailto: info@thelastchristmas.org">
+                {" "}
+                info@thelastchristmas.org
+              </a>{" "}
+              Please RSVP at
+            </p>
           </div>
         </div>
         {/* <CustomCursor container={container} text="play" /> */}
