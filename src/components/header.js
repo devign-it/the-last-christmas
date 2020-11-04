@@ -5,12 +5,18 @@ import styled from "styled-components"
 import { magicNumber, textSize, customColors } from "./variables"
 import PropTypes from "prop-types"
 
+import LogoTlc from "../images/tlc-logoV2.png"
+
 const HeaderWrappper = styled.div`
   display: flex;
   width: 100%;
   padding: ${magicNumber}px 0 0 0;
   align-items: center;
   justify-content: space-between;
+
+  img {
+    width: 240px;
+  }
 
   @media screen and (max-width: 1200px) {
     padding: 0;
@@ -144,6 +150,7 @@ export default function Header({ currentPage, backgroundColor }) {
       <HeaderWrappper ref={wrapper}>
         <AniLink to="/" paintDrip hex={customColors.gray}>
           <h1 className="title">The Last Christmas</h1>
+          {/* <img src={LogoTlc} alt="Logo The Last Christmas" /> */}
         </AniLink>
         <nav>
           <div ref={navToggle} className="navToggle"></div>

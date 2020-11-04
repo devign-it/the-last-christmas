@@ -58,43 +58,49 @@ import "./styles/index.scss"
 function IndexPage() {
   const data = useStaticQuery(graphql`
     query {
-      overlay: file(relativePath: { eq: "slider/foto_inleidend.JPG" }) {
+      overlay: file(
+        relativePath: { eq: "TheLastChristmas_FlyerA5_Front.jpg" }
+      ) {
         childImageSharp {
-          fluid(maxWidth: 800, maxHeight: 600) {
+          fluid(maxWidth: 1020) {
             ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `)
-  const [container, setContainer] = useState()
 
-  useEffect(() => {
-    setContainer(document.querySelector(".overlay"))
-  }, [])
-  useEffect(() => {
-    document.querySelector(".overlay").addEventListener("click", (e) => {
-      e.target.style.display = "none"
-      new Player(document.querySelector("iframe")).play()
+  // temp move interactivity on click video
 
-      const elemCustomCursor = document.querySelector(".CustomCursor")
-      const elemOverlay = document.querySelector(".overlay")
-      elemCustomCursor.parentNode.removeChild(elemCustomCursor)
-      elemOverlay.parentNode.removeChild(elemOverlay)
-    })
-  }, [])
+  // const [container, setContainer] = useState()
+
+  // useEffect(() => {
+  //   setContainer(document.querySelector(".overlay"))
+  // }, [])
+  // useEffect(() => {
+  //   document.querySelector(".overlay").addEventListener("click", (e) => {
+  //     e.target.style.display = "none"
+  //     new Player(document.querySelector("iframe")).play()
+
+  //     const elemCustomCursor = document.querySelector(".CustomCursor")
+  //     const elemOverlay = document.querySelector(".overlay")
+
+  //     elemCustomCursor.parentNode.removeChild(elemCustomCursor)
+  //     elemOverlay.parentNode.removeChild(elemOverlay)
+  //   })
+  // }, [])
   return (
     <Layout title="Aftermovie" background={customColors.gray}>
       <SEO title="Aftermovie" image="/og_aftermovie.JPG" />
       <MainContent>
         <div className="VideoWrapper vimeo-iframe">
-          <iframe
+          {/* <iframe
             title="Video"
             src="https://player.vimeo.com/video/407974165?color=ffffff"
             frameBorder="0"
             allow="autoplay; fullscreen"
             allowFullScreen
-          ></iframe>
+          ></iframe> */}
           <div className="overlay">
             <Img
               style={{ height: "100%", overlay: "hidden" }}
@@ -150,12 +156,12 @@ function IndexPage() {
               Moreover, Lamp intends the message of this work to reach beyond
               the image alone; not only should it encourage preservation, but it
               should give back to the natural resources from which it extracts.
-              For every work sold, half of the revenue will be donated to
-              <a href="https://www.earthday.org/">Earthday organisation</a>
+              For every work sold, half of the revenue will be donated to{" "}
+              <a href="https://treesforall.nl/en/">Threes for All</a>
             </p>
           </div>
         </div>
-        <CustomCursor container={container} text="play" />
+        {/* <CustomCursor container={container} text="play" /> */}
         <script src="https://player.vimeo.com/api/player.js"></script>
       </MainContent>
     </Layout>

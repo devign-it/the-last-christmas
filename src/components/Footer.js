@@ -1,4 +1,5 @@
 /* eslint-disable no-extra-semi */
+
 import React, { useRef, useEffect } from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"

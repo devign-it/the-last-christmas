@@ -40,17 +40,28 @@ const Contact = styled.div`
         &::placeholder {
           font-size: ${textSize.large};
           color: #0006;
+          font-family: "GT Super";
+
           @media screen and (max-width: 1200px) {
             font-size: 2.5vw;
           }
         }
       }
       .message {
-        width: calc(100% - ${magicNumber / 2}px);
+        width: calc(100% - ${magicNumber}px);
         padding: ${magicNumber / 3}px 0 0 ${magicNumber / 2}px;
         height: ${magicNumber * 10}px;
         border-bottom: none;
         text-indent: 0;
+        &::placeholder {
+          font-size: ${textSize.large};
+          color: #0006;
+          font-family: "GT Super";
+
+          @media screen and (max-width: 1200px) {
+            font-size: 2.5vw;
+          }
+        }
         @media screen and (max-width: 1200px) {
           padding: 1.5vw 0 0 2.5vw;
           height: 50vw;
@@ -99,6 +110,7 @@ const ContactDetails = styled.div`
   p {
     font-size: ${textSize.large};
     line-height: ${magicNumber * 0.9}px;
+    margin-bottom: 0;
     @media screen and (max-width: 1200px) {
       font-size: 2.5vw;
       line-height: 4.5vw;
@@ -134,14 +146,23 @@ export default function ContactPage() {
           <div style={{ width: "50%" }} className="details">
             <ContactDetails>
               <h5>Contact</h5>
-              <p>info@thelastchristmas.com</p>
+              <p>
+                <a href="mailto:info@thelastchristmas.com">
+                  info@thelastchristmas.com
+                </a>
+              </p>
               <p>06121042392</p>
               <br />
               <h5>Partners</h5>
-              <p>MediaMonks</p>
-              <p>Since88</p>
-              <p>Rolodex Agency</p>
-              <p>Devign.it</p>
+              <p>
+                <a href="https://oka.foundation/">Oka Foundation</a>
+              </p>
+              <p>
+                <a href="https://since88.nl/">Since88</a>
+              </p>
+              <p>
+                <a href="https://devign.it/">Devign.it</a>
+              </p>
             </ContactDetails>
           </div>
         </Contact>

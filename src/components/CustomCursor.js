@@ -13,7 +13,7 @@ const Cursor = styled.div`
   transform: translate(-50%, -50%);
   border-radius: 50%;
   pointer-events: none;
-
+  cursor: none;
   display: none;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@ export default function CustomCursor({ container, text }) {
   const customCur = useRef()
   useEffect(() => {
     if (container) {
-      container.addEventListener("mouseenter", e => {
+      container.addEventListener("mouseenter", (e) => {
         customCur.current.style.display = "flex"
         container.style.cursor = "none !important"
         updatePosition(e.clientX, e.clientY)
@@ -31,13 +31,13 @@ export default function CustomCursor({ container, text }) {
       container.addEventListener("mouseleave", () => {
         customCur.current.style.display = "none"
       })
-      container.addEventListener("mousemove", e => {
+      container.addEventListener("mousemove", (e) => {
         if (customCur.current.style.display !== "flex") {
           customCur.current.style.display = "flex"
         }
         updatePosition(e.clientX, e.clientY)
       })
-      container.addEventListener("mousewheel", e => {
+      container.addEventListener("mousewheel", (e) => {
         updatePosition(e.clientX, e.clientY)
       })
     }
