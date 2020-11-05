@@ -137,7 +137,7 @@ function IndexPage() {
             <p>
               A confrontational commentary to these questions played out in the
               depths of the Amazon jungle during the holidays. Documented in a
-              5-minute film which will be released alongside the image, Lamp
+              12-minute film which will be released alongside the image, Lamp
               returns to his ancestral roots in Suriname to embark on the
               installation. He hijacks the cultural imagery of Christmas,
               adorning the lush greens of the rainforest with the trinkets of
@@ -162,13 +162,15 @@ function IndexPage() {
             <p>
               The Covid-19 measures will always be strictly applied at this
               exhibition. As a result, we will invite people via email in a time
-              slot.{" "}
+              slot. Opening is the 22th of December 17:00 till 22:00 and 23th of December 10:00 till 17:00 at Loods 6 KSNM - Laan 143 Amsterdam. 
+              Please RSVP at
               <a href="mailto: info@thelastchristmas.org">
                 {" "}
                 info@thelastchristmas.org
-              </a>{" "}
-              Please RSVP at
+                {" "}
+              </a>
             </p>
+            <p></p>
           </div>
         </div>
         {/* <CustomCursor container={container} text="play" /> */}
