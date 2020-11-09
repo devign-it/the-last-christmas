@@ -147,18 +147,17 @@ export default function ContactPage() {
             <ContactDetails>
               <h5>Contact</h5>
               <p>
-                <a href="mailto:info@thelastchristmas.com">
-                  info@thelastchristmas.com
+                <a href="mailto:info@thelastchristmas.org">
+                  info@thelastchristmas.org
                 </a>
               </p>
-              <p>06121042392</p>
+              <p>
+                <a href="tel:+31640961749">+31640961749</a>
+              </p>
               <br />
               <h5>Partners</h5>
               <p>
                 <a href="https://oka.foundation/">Oka Foundation</a>
-              </p>
-              <p>
-                <a href="https://since88.nl/">Since88</a>
               </p>
               <p>
                 <a href="https://devign.it/">Devign.it</a>
