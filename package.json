@@ -55,5 +55,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "peerDependencies": {
+    "webpack-merge": "^5.7.2"
   }
 }
