@@ -8,6 +8,7 @@ export const customColors = {
 }
 
 export const textSize = {
+  medium: `22px`,
   large: `28px`,
   xlarge: `48px`,
   xxlarge: `60px`,

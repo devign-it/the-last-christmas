@@ -1,11 +1,12 @@
 import React, { useRef, useEffect } from "react"
+import { Link } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import MainContent from "./maincontent"
 import styled from "styled-components"
 import { magicNumber, textSize, customColors } from "./variables"
 import PropTypes from "prop-types"
 
-import LogoTlc from "../images/tlc-logoV2.png"
+// import LogoTlc from "../images/tlc-logoV2.png"
 
 const HeaderWrappper = styled.div`
   display: flex;
@@ -47,7 +48,7 @@ const HeaderWrappper = styled.div`
       }
     }
     h2 {
-      font-size: ${textSize.large};
+      font-size: ${textSize.medium};
       vertical-align: middle;
       @media screen and (max-width: 1200px) {
         font-size: 3vw;
@@ -187,6 +188,9 @@ export default function Header({ currentPage, backgroundColor }) {
             ) : (
               ""
             )}
+            <Link to="/vtour">
+              <h2>Digital Tour</h2>
+            </Link>
           </div>
         </nav>
       </HeaderWrappper>
