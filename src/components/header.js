@@ -181,7 +181,7 @@ export default function Header({ currentPage, backgroundColor }) {
             ) : (
               ""
             )}
-            {/* <Link to="/vtour/tour.html">
+            {/* <Link to="/vtour/index.html">
               <h2>Digital Tour</h2>
             </Link> */}
             {currentPage !== "CONTACT" ? (
