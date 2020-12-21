@@ -93,20 +93,35 @@ function IndexPage() {
     <Layout title="Aftermovie" background={customColors.gray}>
       <SEO title="Aftermovie" image="/og_aftermovie.JPG" />
       <MainContent>
-        <div className="VideoWrapper vimeo-iframe">
-          {/* <iframe
-            title="Video"
-            src="https://player.vimeo.com/video/407974165?color=ffffff"
+        <div
+          className="VideoWrapper vimeo-iframe"
+          style={{
+            padding: "75% 0 0 0",
+            position: "relative",
+            marginTop: "5%",
+          }}
+        >
+          <iframe
+            src="https://player.vimeo.com/video/476446600?title=0&byline=0&portrait=0"
+            style={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              width: "100%",
+              height: "100%;",
+            }}
             frameBorder="0"
             allow="autoplay; fullscreen"
             allowFullScreen
-          ></iframe> */}
-          <div className="overlay">
+            title="Video"
+          ></iframe>
+
+          {/* <div className="overlay">
             <Img
               style={{ height: "100%", overlay: "hidden" }}
               fluid={data.overlay.childImageSharp.fluid}
             />
-          </div>
+          </div> */}
         </div>
         <div className="VideoTextWrapper">
           <div className="videoText">
@@ -162,12 +177,12 @@ function IndexPage() {
             <p>
               The Covid-19 measures will always be strictly applied at this
               exhibition. As a result, we will invite people via email in a time
-              slot. Opening is the 22th of December 17:00 till 22:00 and 23th of December 10:00 till 17:00 at Loods 6 KSNM - Laan 143 Amsterdam. 
+              slot. Opening is the 22th of December 17:00 till 22:00 and 23th of
+              December 10:00 till 17:00 at Loods 6 KSNM - Laan 143 Amsterdam.
               Please RSVP at
               <a href="mailto: info@thelastchristmas.org">
                 {" "}
-                info@thelastchristmas.org
-                {" "}
+                info@thelastchristmas.org{" "}
               </a>
             </p>
             <p></p>
