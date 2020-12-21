@@ -115,13 +115,6 @@ function IndexPage() {
             allowFullScreen
             title="Video"
           ></iframe>
-
-          {/* <div className="overlay">
-            <Img
-              style={{ height: "100%", overlay: "hidden" }}
-              fluid={data.overlay.childImageSharp.fluid}
-            />
-          </div> */}
         </div>
         <div className="VideoTextWrapper">
           <div className="videoText">
