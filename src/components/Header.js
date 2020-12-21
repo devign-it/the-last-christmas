@@ -181,9 +181,9 @@ export default function Header({ currentPage, backgroundColor }) {
             ) : (
               ""
             )}
-            {/* <Link to="/vtour/index.html">
-              <h2>Digital Tour</h2>
-            </Link> */}
+            <Link to="/vtour/index.html">
+              <h2>Digital 360 Tour</h2>
+            </Link>
             {currentPage !== "CONTACT" ? (
               <AniLink to="/contact" paintDrip hex={customColors.white}>
                 <h2>Contact</h2>
