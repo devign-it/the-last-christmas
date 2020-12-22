@@ -1,7 +1,7 @@
 ﻿<krpano version="1.20.9" title="Virtual Tour">
 
 	<include url="skin/vtourskin.xml" />
-	<include url="%SWFPATH%/skin/add_hotspot/plugins_l/add_hotspot.xml" />    
+	<!-- <include url="%SWFPATH%/skin/add_hotspot/plugins_l/add_hotspot.xml" />     -->
 	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
 	<skin_settings maps="false"
 	               maps_type="google"
