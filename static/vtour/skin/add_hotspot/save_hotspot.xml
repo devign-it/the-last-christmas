@@ -1,0 +1,60 @@
+
+<krpano>
+
+	<include url="plugins_l/plugin_a/photo.xml"/>
+	<include url="plugins_l/plugin_a/youtube.xml"/>
+	<include url="plugins_l/plugin_a/video.xml"/>
+
+	<addhs_settings  pin_cod="5656" 
+ 					 sound_close_click="true" 
+ 					 video_close_click="true" 
+ 					 youtube_close_click="true" 
+					 FIRSTXML="tour" 
+					 path="%SWFPATH%/skin/" 
+					 action_list="'add_hotspot/plugins_l/actionSM.html'" 
+					 photo="true" 
+					 video="true" 
+					 youtube="true" 
+ 		   		/>
+	
+
+  <hotspot  name="hotspot_1" style="link_hs_sm" type="image" keep="true" url="%SWFPATH%/skin/add_hotspot/picture/media_playback_start.png" zorder="5"
+ 			ath="-178.4265" atv="-4.7753" width="100" height="prop" edge="center"
+ 			install_onclick="8" title="hotspot_1" scene_EL="scene_20_tlc" info_Ah="https://youtu.be/PwstEnSYokQ" fov_EL="120" enabled2="true" visible2="true" drag_hs="true" youtube_h="80"
+ 			onclick="youtubeplayer_open_addhs(https://youtu.be/PwstEnSYokQ);"
+			ondown="drag_LinkSM()"
+ 		/>
+	
+ <style name="pl_hs_add_hs"
+ 		keep="true"
+		enabled2="true"
+ 		visible2="true"
+ 		visible="false"
+ 		alpha="1"
+ 		alpha2="1"
+ 		capture="false"
+ 		handcursor="true"
+ 		zorder="0"
+ 		install_onclick="14"
+ 		fov_EL="90"
+ 		fillcolor="0x3725FF"
+ 		fillcolor2="0xE85A5A"
+ 		fillalpha="0.58"
+ 		fillalpha2="0.50"
+ 		borderwidth="1"
+ 		borderwidth2="1"
+ 		bordercolor="0x55FF00"
+ 		bordercolor2="0x55FF00"
+ 		borderalpha="1.00"
+ 		borderalpha2="1.00"
+ 		onover="set_pol_2(get(name));"
+ 		onout="set_pol_1(get(name));"
+ 		ondown="ondown_pl_hs();"
+ 		blendmode="normal"
+	 />
+
+	 <!-- polygonal hotspot -->
+
+
+ 
+</krpano>
